@@ -52,7 +52,4 @@ jobs:
          uses: Difegue/action-megacmd@1.2.0
          with:
           args: put $(ls | grep "2_miui") /
-         env:
-          USERNAME: ${{ github.event.inputs.email }} 
-          PASSWORD: ${{ github.event.inputs.pwd }} 
 
