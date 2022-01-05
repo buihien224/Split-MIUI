@@ -1,0 +1,9 @@
+ota-property-files=metadata:69:319,metadata.pb:456:201                 
+ota-required-cache=0
+ota-type=BLOCK
+post-build=Redmi/picasso/picasso:12/RKQ1.200826.002/21.12.29:user/release-keys
+post-build-incremental=21.12.29
+post-sdk-level=31
+post-security-patch-level=2021-12-01
+post-timestamp=1640711767
+pre-device=picasso

@@ -1,0 +1,37 @@
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+
+# --- Start patching dynamic partitions ---
+
+
+# Update dynamic partition metadata
+
+assert(update_dynamic_partitions(package_extract_file("dynamic_partitions_op_list")));
+
+# Patch partition system
+
+ui_print("Patching system image unconditionally...");
+show_progress(0.500000, 0);
+block_image_update(map_partition("system"), package_extract_file("system.transfer.list"), "system.new.dat.br", "system.patch.dat") || abort("E1001: Failed to update system image.");
+
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+ui_print("BOOTLOOP CAUTION");
+set_progress(1.000000);
