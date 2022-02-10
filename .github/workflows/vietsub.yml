@@ -9,13 +9,6 @@ on:
       description: 'OTA Url'
       required: true
       default: 'Paste Link ROM here'
-     email:
-      description: 'MEGA email'
-      required: true
-      default: 'your@gmail.com'
-     pwd:
-      description: 'MEGA password'
-      required: true
   
   
 jobs:
@@ -30,6 +23,13 @@ jobs:
          run: |
             sudo apt-get install -y git wget zip unzip axel
             
+       - name: Set up Rclone 
+         run: |
+             cd $GITHUB_WORKSPACE
+             curl https://rclone.org/install.sh | sudo bash
+             cp rclone.conf ~/
+             mkdir ~/.config/rclone/
+             cp rclone.conf ~/.config/rclone/
        - name: Download ROM
          run: |
             cd $GITHUB_WORKSPACE
@@ -42,14 +42,8 @@ jobs:
             ./split.sh
             
        - name: Upload First File
-         uses: Difegue/action-megacmd@1.2.0
-         with:
-          args: put $(ls | grep "1_miui") /
-         env:
-          USERNAME: ${{ github.event.inputs.email }} 
-          PASSWORD: ${{ github.event.inputs.pwd }} 
+            cd $GITHUB_WORKSPACE
+            rclone copy $(ls | grep "1_miui") gdrive:/SPLIT_MIUI/
        - name: Upload Second File
-         uses: Difegue/action-megacmd@1.2.0
-         with:
-          args: put $(ls | grep "2_miui") /
-
+            cd $GITHUB_WORKSPACE
+            rclone copy $(ls | grep "2_miui") gdrive:/SPLIT_MIUI/
