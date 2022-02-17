@@ -48,4 +48,4 @@ jobs:
        - name: Upload Second File
          run: |
             cd $GITHUB_WORKSPACE
-            rclone copy $(ls | grep "2_miui") gdrive:/SPLIT_MIUI/
+            rclone copy $(ls | grep "2_miui") ondrive:/SPLIT_MIUI/
